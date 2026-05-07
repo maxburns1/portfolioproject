@@ -50,6 +50,22 @@ class Project(models.Model):
         blank=True,
         help_text="GitHub repo, live demo, or video walkthrough URL.",
     )
+    video_url = models.URLField(
+        blank=True,
+        help_text="Optional: YouTube embed URL (use the URL from Share → Embed, format https://www.youtube.com/embed/VIDEO_ID).",
+    )
+    deliverable_file = models.FileField(
+        upload_to="deliverables/",
+        blank=True,
+        null=True,
+        help_text="Optional: a downloadable deliverable (PDF, PPTX, ZIP, etc.) shown as a download button.",
+    )
+    deliverable_label = models.CharField(
+        max_length=60,
+        blank=True,
+        default="Download Deliverable",
+        help_text="Optional: text shown on the download button (e.g., 'Download Pitch Deck', 'Download Resume', 'Download Workflow JSON').",
+    )
 
     # --- Display controls ---
     is_featured = models.BooleanField(

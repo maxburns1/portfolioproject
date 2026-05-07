@@ -12,7 +12,11 @@ class ProjectAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ("Overview", {
-            "fields": ("title", "slug", "summary", "category", "image", "link")
+            "fields": ("title", "slug", "summary", "category", "image", "link", "video_url")
+        }),
+        ("Deliverable (optional download)", {
+            "fields": ("deliverable_file", "deliverable_label"),
+            "description": "Add a downloadable file like a PDF, PPTX, or workflow JSON. The label appears on the download button.",
         }),
         ("Interview Write-up", {
             "fields": (

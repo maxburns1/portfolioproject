@@ -14,11 +14,18 @@
         <span class="badge bg-light text-dark mb-3">{{ project.get_category_display }}</span>
         <h1>{{ project.title }}</h1>
         <p class="lead mt-3">{{ project.summary }}</p>
-        {% if project.link %}
-        <a href="{{ project.link }}" target="_blank" rel="noopener" class="btn btn-primary-custom mt-3">
-            <i class="bi bi-box-arrow-up-right"></i> View Project
-        </a>
-        {% endif %}
+<div class="mt-3 d-flex flex-wrap gap-2">
+    {% if project.link %}
+    <a href="{{ project.link }}" target="_blank" rel="noopener" class="btn btn-primary-custom">
+        <i class="bi bi-box-arrow-up-right"></i> View Project
+    </a>
+    {% endif %}
+    {% if project.deliverable_file %}
+    <a href="{{ project.deliverable_file.url }}" target="_blank" rel="noopener" class="btn btn-outline-custom">
+        <i class="bi bi-download"></i> {{ project.deliverable_label|default:"Download" }}
+    </a>
+    {% endif %}
+</div>
     </div>
 </section>
 
