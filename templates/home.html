@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Home | AI Portfolio{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <div class="accent-bar"></div>
+                <h1>Building AI Systems<br>That Solve Real Problems.</h1>
+                <p class="lead mt-4">
+                    I'm an AI Engineer and Full-Stack Developer with hands-on experience
+                    shipping LLM agents, automation workflows, and ML-powered web apps.
+                </p>
+                <div class="mt-4">
+                    <a href="{% url 'project_list' %}" class="btn btn-primary-custom me-2">
+                        View My Work <i class="bi bi-arrow-right"></i>
+                    </a>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-custom">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">A selection of work spanning AI agents, ML, and full-stack development.</p>
+
+        <div class="row g-4">
+            {% for project in featured_projects %}
+            <div class="col-md-6 col-lg-4">
+                <a href="{{ project.get_absolute_url }}" class="text-decoration-none">
+                    <div class="project-card">
+                        {% if project.image %}
+                            <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}">
+                        {% else %}
+                            <div class="placeholder-img"><i class="bi bi-cpu"></i></div>
+                        {% endif %}
+                        <div class="card-body">
+                            <span class="badge-category">{{ project.get_category_display }}</span>
+                            <h5>{{ project.title }}</h5>
+                            <p class="summary">{{ project.summary }}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p class="text-muted">No projects yet — add some via the admin panel.</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="{% url 'project_list' %}" class="btn btn-primary-custom">See All Projects</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

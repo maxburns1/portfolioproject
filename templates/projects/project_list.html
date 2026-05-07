@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Projects | AI Portfolio{% endblock %}
+
+{% block content %}
+
+<section class="hero" style="padding: 4rem 0 3rem;">
+    <div class="container">
+        <div class="accent-bar"></div>
+        <h1>All Projects</h1>
+        <p class="lead mt-3">From AI agents to full-stack platforms — here's what I've shipped.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="row g-4">
+            {% for project in projects %}
+            <div class="col-md-6 col-lg-4">
+                <a href="{{ project.get_absolute_url }}" class="text-decoration-none">
+                    <div class="project-card">
+                        {% if project.image %}
+                            <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}">
+                        {% else %}
+                            <div class="placeholder-img"><i class="bi bi-cpu"></i></div>
+                        {% endif %}
+                        <div class="card-body">
+                            <span class="badge-category">{{ project.get_category_display }}</span>
+                            <h5>{{ project.title }}</h5>
+                            <p class="summary">{{ project.summary }}</p>
+                            <div class="mt-2">
+                                {% for tool in project.tools_list|slice:":3" %}
+                                    <span class="tool-tag">{{ tool }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center py-5">
+                <i class="bi bi-folder2-open" style="font-size: 3rem; color: var(--slate-300);"></i>
+                <p class="mt-3 text-muted">No projects added yet. Head to the admin to add some.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

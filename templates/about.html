@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}About | Maxwell Burns{% endblock %}
+
+{% block content %}
+
+<section class="hero" style="padding: 4rem 0 3rem;">
+    <div class="container">
+        <div class="accent-bar"></div>
+        <h1>About Me</h1>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="detail-section">
+                    <h3><i class="bi bi-person-circle"></i> Who I Am</h3>
+                    <p>
+                        I'm Maxwell Burns, a junior at Baylor University studying Finance,
+                        Management Information Systems, and Business Analytics. I sit at the
+                        intersection of business and technology &mdash; comfortable in both a
+                        balance sheet and a code editor.
+                    </p>
+                    <p>
+                        I'll be joining KPMG's Technology Assurance practice as an intern this
+                        summer, where I'll be supporting IT audit and risk advisory engagements.
+                        Outside of class and recruiting, I spend my time building real software:
+                        Django web applications, AI agents, and automation workflows that solve
+                        problems I actually care about.
+                    </p>
+                </div>
+
+                <div class="detail-section">
+                    <h3><i class="bi bi-compass"></i> Why I Build
+                    </h3>
+                    <p>
+                        My interest in technology started with a simple realization &mdash; most of
+                        the problems I saw in finance, leadership roles, and student
+                        organizations weren't strategy problems. They were workflow problems.
+                        Manual processes, scattered data, and tools that didn't talk to each other.
+                    </p>
+                    <p>
+                        That's why I learned to code. As VP of Finance for Delta Sigma Pi, I rebuilt
+                        our entire budgeting process in Excel from scratch. Then I started asking
+                        bigger questions: <em>What if I could build the tool myself? What would AI
+                        change about how this team operates?</em> Those questions led me to Python,
+                        Django, and now to building AI-powered applications.
+                    </p>
+                </div>
+
+                <div class="detail-section">
+                    <h3><i class="bi bi-bullseye"></i> What I'm Looking For</h3>
+                    <p>
+                        Roles where I can bridge business strategy and technical execution &mdash;
+                        whether that's tech consulting, technology assurance, product, or any seat
+                        where understanding both sides is an advantage. I work best with people who
+                        value clear communication, curiosity over credentials, and shipping real
+                        things over talking about them.
+                    </p>
+                </div>
+
+                <div class="detail-section">
+    <h3><i class="bi bi-heart"></i> Outside of Work</h3>
+    <p>
+       <p>
+    When I'm not in the library or behind a screen, I'm usually in the gym,
+    on a pickleball court, or editing video.
+</p>
+    </p>
+</div>
+
+                <div class="text-center mt-4">
+                    <a href="{% url 'project_list' %}" class="btn btn-primary-custom me-2">See My Work</a>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-secondary">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

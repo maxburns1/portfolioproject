@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}{{ project.title }} | Portfolio{% endblock %}
+
+{% block content %}
+
+<!-- Hero header for the project -->
+<section class="hero" style="padding: 4rem 0 3rem;">
+    <div class="container">
+        <a href="{% url 'project_list' %}" class="text-decoration-none mb-3 d-inline-block" style="color: var(--slate-300);">
+            <i class="bi bi-arrow-left"></i> Back to all projects
+        </a>
+        <div class="accent-bar"></div>
+        <span class="badge bg-light text-dark mb-3">{{ project.get_category_display }}</span>
+        <h1>{{ project.title }}</h1>
+        <p class="lead mt-3">{{ project.summary }}</p>
+        {% if project.link %}
+        <a href="{{ project.link }}" target="_blank" rel="noopener" class="btn btn-primary-custom mt-3">
+            <i class="bi bi-box-arrow-up-right"></i> View Project
+        </a>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Detailed write-up -->
+<section class="section" style="padding-top: 3rem;">
+    <div class="container">
+        <div class="row">
+            <!-- Left: image + tools sidebar -->
+            <div class="col-lg-4 mb-4">
+                {% if project.image %}
+                <img src="{{ project.image.url }}" alt="{{ project.title }}"
+                     class="img-fluid rounded shadow-sm mb-4">
+                {% else %}
+                <div class="placeholder-img rounded mb-4" style="height: 280px;">
+                    <i class="bi bi-cpu"></i>
+                </div>
+                {% endif %}
+
+                <div class="detail-section">
+                    <h3><i class="bi bi-tools"></i> Tools &amp; Tech</h3>
+                    <div>
+                        {% for tool in project.tools_list %}
+                            <span class="tool-tag">{{ tool }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: structured write-up -->
+            <div class="col-lg-8">
+
+                <div class="detail-section">
+                    <h3><i class="bi bi-bullseye"></i> The Business Problem</h3>
+                    <p>{{ project.business_problem|linebreaksbr }}</p>
+                </div>
+
+                <div class="detail-section">
+                    <h3><i class="bi bi-stars"></i> Key Features</h3>
+                    <ul>
+                        {% for feature in project.features_list %}
+                            <li>{{ feature }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h3><i class="bi bi-person-workspace"></i> My Role &amp; Contribution</h3>
+                    <p>{{ project.role_contribution|linebreaksbr }}</p>
+                </div>
+
+                <div class="detail-section">
+                    <h3><i class="bi bi-lightning-charge"></i> Biggest Challenge</h3>
+                    <p>{{ project.biggest_challenge|linebreaksbr }}</p>
+                </div>
+
+                <div class="detail-section">
+                    <h3><i class="bi bi-lightbulb"></i> Lessons Learned</h3>
+                    <p>{{ project.lessons_learned|linebreaksbr }}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

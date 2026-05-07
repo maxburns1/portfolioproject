@@ -1,0 +1,59 @@
+# Secrets — NEVER commit
+.env
+*.env
+.env.*
+SETTINGS_SNIPPET.py
+
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Media uploads (user-uploaded files like project screenshots)
+media/
+
+# Static files collected for production
+staticfiles/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE / editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
